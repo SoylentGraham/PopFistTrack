@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 60bfc92cad57540caad19008e2f4c0d1
+timeCreated: 1427297197
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - mMotionTextureGenerator: {instanceID: 0}
+  - mBackgroundTexture: {instanceID: 0}
+  - mBackgroundLearnerMat: {fileID: 2100000, guid: f6ffd98812efd46aba6beece1b9dc895,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
