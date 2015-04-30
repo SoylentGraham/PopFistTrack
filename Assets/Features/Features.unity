@@ -561,22 +561,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1712138177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b8253e2eac9b498b9836be16ca549ce, type: 3}
+  m_Script: {fileID: 11500000, guid: c96031967d3b2480782220350abf4f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mInputPrev: {fileID: 8400000, guid: ddb88dc27f1534026882bd4423c194d7, type: 2}
+  mInputNext: {fileID: 8400000, guid: 34ac627fe564949179d9d0b52a28c46b, type: 2}
   mMakeFeaturesShader: {fileID: 2100000, guid: c39d37706d75944c8809f9e43d0c39d3, type: 2}
-  mTrackFrameLag: 1
-  mFeatures: {fileID: 8400000, guid: 62764401d69c646debd41c6c9bf2a0d2, type: 2}
+  mFeaturesPrev: {fileID: 0}
+  mFeaturesNext: {fileID: 8400000, guid: 62764401d69c646debd41c6c9bf2a0d2, type: 2}
   mTrackFeaturesShader: {fileID: 2100000, guid: 9ad12b326aea146b4b9d442c4e54974d,
     type: 2}
-  mTrackedFeatures: {fileID: 8400000, guid: 7f76e79c27ef34ff7985fc3f8441ec0f, type: 2}
-  mInput: {fileID: 8400000, guid: 34ac627fe564949179d9d0b52a28c46b, type: 2}
-  mInputBlurred: {fileID: 0}
-  mInputBlurShader: {fileID: 0}
-  mRansacSamples: 200
-  mLockPrevFeatures: 0
-  mShowInput: 1
-  mRenderMinDelta: 1
+  mFeatureMatches: {fileID: 8400000, guid: 7f76e79c27ef34ff7985fc3f8441ec0f, type: 2}
+  mDebugRectPrev:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: .5
+    height: 1
+  mDebugRectNext:
+    serializedVersion: 2
+    x: .5
+    y: 0
+    width: .5
+    height: 1
+  mDrawJoints: 1
+  mMaxResults: 200
+  mRenderMinDelta: 2
+  mRenderLeft: {fileID: 8400000, guid: 62764401d69c646debd41c6c9bf2a0d2, type: 2}
+  mRenderRight: {fileID: 8400000, guid: 34ac627fe564949179d9d0b52a28c46b, type: 2}
+  mRenderRightAlpha: {fileID: 0}
 --- !u!4 &1712138179
 Transform:
   m_ObjectHideFlags: 0
@@ -685,3 +698,47 @@ MonoBehaviour:
   mAdjustToMotionShader: {fileID: 2100000, guid: 364459c4c494a47f896439b111850ba3,
     type: 2}
   mBackgroundAlpha: .853999972
+--- !u!1 &2012907298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2012907300}
+  - 114: {fileID: 2012907299}
+  m_Layer: 0
+  m_Name: FeatureInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2012907299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2012907298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24da550fa919d4ae6820ab919e6b613a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mFrameDelay: 5
+  mInput: {fileID: 8400000, guid: 34ac627fe564949179d9d0b52a28c46b, type: 2}
+  mOutput: {fileID: 8400000, guid: ddb88dc27f1534026882bd4423c194d7, type: 2}
+  mInputHistory: []
+  mHistoryPool: []
+--- !u!4 &2012907300
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2012907298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.01120424, z: .342999995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8

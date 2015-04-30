@@ -8,6 +8,8 @@
 		MinScore("MinScore", Range(0,1)) = 0.70
 		CommonMinScore("CommonMinScore", Range(0,1)) = 0.90
 		gUseDebugResults("UseDebugResults", Int ) = 0
+		DebugPrevOffsetX("DebugPrevOffsetX",Range(-1,1)) = 0
+		DebugPrevOffsetY("DebugPrevOffsetY",Range(-1,1)) = 0
 	}
 	SubShader {
 	 Pass {
@@ -18,6 +20,7 @@
 			#pragma vertex vert
 			#pragma fragment frag
 	
+	#define ONLY_SEARCH_HORZ 1
 	
 			struct VertexInput {
 				float4 Position : POSITION;
@@ -41,6 +44,8 @@
 			float CommonMinScore;
 			int SampleRadiusStep;
 			int gUseDebugResults;
+			float DebugPrevOffsetX;
+			float DebugPrevOffsetY;
 			
 			FragInput vert(VertexInput In) {
 				FragInput Out;
@@ -91,7 +96,7 @@
 			int2 GetPrevFeature(float2 Uv,int2 Offset)
 			{
 				Uv += Offset * FeaturesPrev_TexelSize.xy;
-				float4 Feature4 = tex2D( FeaturesPrev, Uv );
+				float4 Feature4 = tex2D( FeaturesPrev, Uv + float2(DebugPrevOffsetX,DebugPrevOffsetY) );
 				return GetFeature2( Feature4 );
 			}
 			
@@ -118,7 +123,9 @@
 				float BestDist = 1000.0f;
 				int CommonHitCount = 0;
 				
-				for ( int y=-SampleRadius;	y<=SampleRadius;	y+=max(1,SampleRadiusStep) )
+			
+				//for ( int y=-SampleRadius;	y<=SampleRadius;	y+=max(1,SampleRadiusStep) )
+				for ( int y=-1;	y<=1;	y++ )
 				for ( int x=-SampleRadius;	x<=SampleRadius;	x+=max(1,SampleRadiusStep) )
 				{
 					int2 MatchFeature = GetNewFeature( SampleOrigin, int2(x,y) );

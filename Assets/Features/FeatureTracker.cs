@@ -15,6 +15,60 @@ public class FeatureResults
 	}
 };
 
+public class FeatureTrackOptions
+{
+	public int	MaxResults = 100;
+};
+
+
+public class FeatureTracker
+{
+	public static FeatureResults GetFeatureTracks(RenderTexture FeatureMatches,ref Texture2D FeatureMatchesBuffer,FeatureTrackOptions Options)
+	{
+		if (!FeatureMatches )
+			return null;
+
+		if ( !FeatureMatchesBuffer )
+			FeatureMatchesBuffer = new Texture2D( FeatureMatches.width, FeatureMatches.height, TextureFormat.ARGB32, false );
+		
+		//	extract data for debug rendering
+		RenderTexture.active = FeatureMatches;
+		FeatureMatchesBuffer.ReadPixels(new Rect (0, 0, FeatureMatches.width, FeatureMatches.height), 0, 0);
+		FeatureMatchesBuffer.Apply (true);
+		Color32[] FeatureMatchesData = FeatureMatchesBuffer.GetPixels32();
+		RenderTexture.active = null;
+		FeatureResults Results = CalcFeaturePairs (FeatureMatchesData,FeatureMatchesBuffer.width, FeatureMatchesBuffer.height, Options);
+		return Results;
+	}
+	
+	static FeatureResults CalcFeaturePairs(Color32[] TrackedFeaturesData,int ImageWidth,int ImageHeight,FeatureTrackOptions Options)
+	{
+		FeatureResults Results = new FeatureResults ();
+		
+		//	count matches
+		for (int i=0; i<TrackedFeaturesData.Length; i++)
+		{
+			if ( TrackedFeaturesData [i].a < 1 )
+				continue;
+			Results.mTotalResults ++;
+			
+			if ( Results.mMatches.Count >= Options.MaxResults )
+				break;
+			
+			int y = i / ImageWidth;
+			int x = i % ImageWidth;
+			float Startu = x /(float)ImageWidth;
+			float Startv = y /(float)ImageHeight;
+			float Endu = (TrackedFeaturesData [i].r / 255.0f);
+			float Endv = (TrackedFeaturesData [i].g / 255.0f);
+			Vector4 Match = new Vector4( Startu, Startv, Endu, Endv );
+			Results.mMatches.Add( Match );
+		}
+		
+		return Results;
+	}
+};
+/*
 public class FeatureTracker : MonoBehaviour {
 
 	public Material			mMakeFeaturesShader;
@@ -200,3 +254,6 @@ public class FeatureTracker : MonoBehaviour {
 
 	}
 }
+
+*/
+

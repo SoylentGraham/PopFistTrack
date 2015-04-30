@@ -37,6 +37,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: FeaturesPrev
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -77,13 +84,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: FeaturesPrev
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -96,6 +96,38 @@ Material:
       data:
         first:
           name: _DstBlend
+        second: 0
+      data:
+        first:
+          name: _SampleRadius
+        second: 9
+      data:
+        first:
+          name: SampleRadiusStep
+        second: 2
+      data:
+        first:
+          name: MaxCommonHitCount
+        second: 13.1000004
+      data:
+        first:
+          name: MinScore
+        second: .819999993
+      data:
+        first:
+          name: CommonMinScore
+        second: .870000005
+      data:
+        first:
+          name: gUseDebugResults
+        second: 0
+      data:
+        first:
+          name: DebugPrevOffsetX
+        second: 0
+      data:
+        first:
+          name: DebugPrevOffsetY
         second: 0
       data:
         first:
@@ -136,42 +168,6 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0
-      data:
-        first:
-          name: SampleRadius
-        second: 6
-      data:
-        first:
-          name: _SampleRadius
-        second: 5
-      data:
-        first:
-          name: SampleRadiusStep
-        second: 2
-      data:
-        first:
-          name: MaxCommonHitCount
-        second: 3
-      data:
-        first:
-          name: MinScore
-        second: .75
-      data:
-        first:
-          name: CommonMinScore
-        second: .899999976
-      data:
-        first:
-          name: gUseDebugResults
-        second: 0
-      data:
-        first:
-          name: MaxHitCount
-        second: 15.6999998
-      data:
-        first:
-          name: UseDebugResults
         second: 0
     m_Colors:
       data:
