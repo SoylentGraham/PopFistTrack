@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MakeFeatures
-  m_Shader: {fileID: 4800000, guid: 5555e7a674180459b9ca72ec08dfc149, type: 3}
+  m_Name: TrackFeatures
+  m_Shader: {fileID: 4800000, guid: c2a7e3a96eb91446a8e97a79b7cc2de8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -77,6 +77,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: FeaturesPrev
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -132,28 +139,40 @@ Material:
         second: 0
       data:
         first:
-          name: InnerSampleCount
-        second: 16
+          name: SampleRadius
+        second: 6
       data:
         first:
-          name: OuterSampleCount
-        second: 16
+          name: _SampleRadius
+        second: 5
       data:
         first:
-          name: InnerRadius
+          name: SampleRadiusStep
         second: 2
       data:
         first:
-          name: OuterRadius
-        second: 8
+          name: MaxCommonHitCount
+        second: 3
       data:
         first:
-          name: BrighterTolerance
-        second: .200000003
+          name: MinScore
+        second: .75
       data:
         first:
-          name: InvertLum
-        second: 1
+          name: CommonMinScore
+        second: .899999976
+      data:
+        first:
+          name: gUseDebugResults
+        second: 0
+      data:
+        first:
+          name: MaxHitCount
+        second: 15.6999998
+      data:
+        first:
+          name: UseDebugResults
+        second: 0
     m_Colors:
       data:
         first:
