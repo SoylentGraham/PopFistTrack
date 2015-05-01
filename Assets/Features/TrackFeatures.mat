@@ -100,23 +100,23 @@ Material:
       data:
         first:
           name: _SampleRadius
-        second: 9
+        second: 7
       data:
         first:
           name: SampleRadiusStep
-        second: 2
+        second: 1
       data:
         first:
           name: MaxCommonHitCount
-        second: 13.1000004
+        second: 3
       data:
         first:
           name: MinScore
-        second: .819999993
+        second: .839999974
       data:
         first:
           name: CommonMinScore
-        second: .870000005
+        second: .959999979
       data:
         first:
           name: gUseDebugResults

@@ -20,7 +20,7 @@
 			#pragma vertex vert
 			#pragma fragment frag
 	
-	#define ONLY_SEARCH_HORZ 1
+	#define ONLY_SEARCH_HORZ 0
 	
 			struct VertexInput {
 				float4 Position : POSITION;
@@ -124,8 +124,11 @@
 				int CommonHitCount = 0;
 				
 			
-				//for ( int y=-SampleRadius;	y<=SampleRadius;	y+=max(1,SampleRadiusStep) )
+				#if ONLY_SEARCH_HORZ
 				for ( int y=-1;	y<=1;	y++ )
+				#else
+				for ( int y=-SampleRadius;	y<=SampleRadius;	y+=max(1,SampleRadiusStep) )
+				#endif
 				for ( int x=-SampleRadius;	x<=SampleRadius;	x+=max(1,SampleRadiusStep) )
 				{
 					int2 MatchFeature = GetNewFeature( SampleOrigin, int2(x,y) );

@@ -141,7 +141,7 @@ Material:
       data:
         first:
           name: BrighterTolerance
-        second: .170000002
+        second: .180000007
       data:
         first:
           name: InvertLum
