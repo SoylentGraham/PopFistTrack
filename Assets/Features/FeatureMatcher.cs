@@ -16,7 +16,7 @@ public class FeatureMatcher : MonoBehaviour {
 	public Rect				mDebugRectPrev = new Rect(0,0,0.5f,1);
 	public Rect				mDebugRectNext = new Rect(0.5f,0,0.5f,1);
 	public bool				mDrawJoints = true;
-	private FeatureResults	mJoints;
+	public FeatureResults	mJoints;
 	private Texture2D		mFeatureMatchesBuffer;
 	[Range(0,10000)]
 	public int				mMaxResults = 100;
