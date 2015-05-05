@@ -79,14 +79,14 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: LumLastTex
+          name: Prev_MainTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: Prev_MainTex
+          name: LumLastTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -150,6 +150,10 @@ Material:
         second: .193000004
       data:
         first:
+          name: FavourSmallerRadDiff
+        second: .0610000007
+      data:
+        first:
           name: DiffRadius
         second: 7
       data:
@@ -164,10 +168,6 @@ Material:
         first:
           name: Debug_AmplifyDelta
         second: 0
-      data:
-        first:
-          name: FavourSmallerRadDiff
-        second: .0610000007
     m_Colors:
       data:
         first:

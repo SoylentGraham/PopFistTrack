@@ -137,11 +137,11 @@ Material:
       data:
         first:
           name: OuterRadius
-        second: 4
+        second: 6
       data:
         first:
           name: BrighterTolerance
-        second: .180000007
+        second: .200000003
       data:
         first:
           name: InvertLum

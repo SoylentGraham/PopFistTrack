@@ -42,9 +42,10 @@
 			}
 			
 		
-			float2 GetRingSampleOffsetPx(int Index,int Max,float Radius)
+			float2 GetRingSampleOffsetPx(int Index,int Max,float Radius,float AngleOffset)
 			{
 				float t = Index / (float)Max;
+				t += (AngleOffset*1.0f) / (float)Max;
 				float rad = radians( 360.f * t );
 				float x = cos( rad ) * Radius;
 				float y = sin( rad ) * Radius;
@@ -66,12 +67,12 @@
 				*/
 				if ( Index < InnerSampleCount )
 				{
-					float2 Offset = GetRingSampleOffsetPx( Index, InnerSampleCount, InnerRadius );
+					float2 Offset = GetRingSampleOffsetPx( Index, InnerSampleCount, InnerRadius, 0.f );
 					return float3( Offset.x, Offset.y, 1 );
 				}
 				else if ( Index < InnerSampleCount+OuterSampleCount )
 				{
-					float2 Offset = GetRingSampleOffsetPx( Index-InnerSampleCount, OuterSampleCount, OuterRadius );
+					float2 Offset = GetRingSampleOffsetPx( Index-InnerSampleCount, OuterSampleCount, OuterRadius, 0.5f );
 					return float3( Offset.x, Offset.y, 1 );
 				}
 				else

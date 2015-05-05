@@ -1,7 +1,7 @@
 ﻿#define InnerSampleCount	16
 #define OuterSampleCount	16
-#define InnerSampleWeight	0.3f
-#define OuterSampleWeight	0.7f
+#define InnerSampleWeight	0.5f
+#define OuterSampleWeight	0.5f
 
 int LEFTSHIFT(int Mask)
 {
