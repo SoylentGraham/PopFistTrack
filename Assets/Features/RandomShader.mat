@@ -133,7 +133,7 @@ Material:
       data:
         first:
           name: GenerateRandomAlpha
-        second: 0
+        second: 1
     m_Colors:
       data:
         first:

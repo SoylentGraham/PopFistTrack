@@ -3,11 +3,15 @@ using System.Collections;
 
 public class HomographyGenerator : MonoBehaviour {
 
-	public Texture2D		mHomographyPoints;
+	public RenderTexture	mHomographyPoints;
+	private Texture2D		mHomographyPointsTemp;
 	public RenderTexture	mHomographys;
 	public FeatureMatcher	mFeatureMatcher;
 	public Material			mMakeHomographyShader;
-	public RenderTexture	mRandomTexture;
+	const int HomographyMatrixRows = 3;
+	const int HomographyOutlierRow = HomographyMatrixRows;
+	public Rect				mDebugHomoPointsRect = new Rect(0,0,0,0);
+	public Rect				mDebugHomographysRect = new Rect(0,0,0,0);
 
 	// Use this for initialization
 	void Start () {
@@ -46,8 +50,14 @@ public class HomographyGenerator : MonoBehaviour {
 			HomoPointsData [i].b = dstx;
 			HomoPointsData [i].a = dsty;
 		}
-		mHomographyPoints.SetPixels32( HomoPointsData );
-		mHomographyPoints.Apply ();
+
+		if (!mHomographyPointsTemp)
+			mHomographyPointsTemp = new Texture2D (mHomographyPoints.width, mHomographyPoints.height, TextureFormat.ARGB32, false);
+
+		mHomographyPointsTemp.SetPixels32( HomoPointsData );
+		mHomographyPointsTemp.Apply ();
+		mHomographyPoints.DiscardContents ();
+		Graphics.Blit (mHomographyPointsTemp, mHomographyPoints);
 		return true;
 	}
 
@@ -56,12 +66,13 @@ public class HomographyGenerator : MonoBehaviour {
 		if (!PopCheckCurrentCamera.CheckCurrentCamera ())
 			return false;
 	
-		if ( mHomographys.height != 9 || mHomographys.width < 4 )
+		if ( mHomographys.height != HomographyOutlierRow+1 || mHomographys.width < 4 )
 		{
-			throw new UnityException("Homography target texture needs to be 9 pixels high (3x3 matrix)");
+			throw new UnityException("Homography target texture needs to be "+HomographyOutlierRow+" pixels high (3x3 matrix)");
 			return false;
 		}
-		
+
+		mHomographys.DiscardContents ();
 		Graphics.Blit (mHomographyPoints, mHomographys, mMakeHomographyShader);
 		return true;
 	}
@@ -73,5 +84,13 @@ public class HomographyGenerator : MonoBehaviour {
 
 		if ( !MakeHomographyTexture() )
 			return;
+	}
+
+	void OnGUI()
+	{
+		if ( mHomographyPoints != null )
+			GUI.DrawTexture( new Rect(mDebugHomoPointsRect.x*Screen.width,mDebugHomoPointsRect.y*Screen.height,mDebugHomoPointsRect.width*Screen.width,mDebugHomoPointsRect.height*Screen.height), mHomographyPoints );
+		if ( mHomographys != null )
+			GUI.DrawTexture( new Rect(mDebugHomographysRect.x*Screen.width,mDebugHomographysRect.y*Screen.height,mDebugHomographysRect.width*Screen.width,mDebugHomographysRect.height*Screen.height), mHomographys );
 	}
 }

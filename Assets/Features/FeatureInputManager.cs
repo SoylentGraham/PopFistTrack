@@ -50,6 +50,7 @@ public class FeatureInputManager : MonoBehaviour {
 
 		//	pop oldest into output
 		if (mInputHistory.Count >= mFrameDelay) {
+			mOutput.DiscardContents();
 			Graphics.Blit( mInputHistory[0], mOutput );
 			PoolPush( mInputHistory[0] );
 			mInputHistory.RemoveAt(0);

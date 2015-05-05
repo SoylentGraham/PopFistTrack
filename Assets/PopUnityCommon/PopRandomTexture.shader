@@ -54,7 +54,6 @@
 				float z = snoise( fragCoord.xy * float2(cos(MagicNumberB.z),sin(MagicNumberC.z))); 
 				float w = snoise( fragCoord.xy * float2(cos(MagicNumberB.x),sin(MagicNumberC.z))); 
 				w = !GenerateRandomAlpha ? 1.0 : w;
-				
 				return float4(x,y,z,w);
 			}
 		ENDCG

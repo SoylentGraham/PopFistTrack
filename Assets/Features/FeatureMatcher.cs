@@ -58,6 +58,8 @@ public class FeatureMatcher : MonoBehaviour {
 		}
 
 		//	make features for both inputs
+		mFeaturesPrev.DiscardContents ();
+		mFeaturesNext.DiscardContents ();
 		Graphics.Blit (mInputPrev, mFeaturesPrev, mMakeFeaturesShader);
 		Graphics.Blit (mInputNext, mFeaturesNext, mMakeFeaturesShader);
 

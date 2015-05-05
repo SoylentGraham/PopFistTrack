@@ -20,10 +20,11 @@ public class RandomTextureGenerator : MonoBehaviour {
 		if (!PopCheckCurrentCamera.CheckCurrentCamera ())
 			return;
 
-		if (!mGenerateOnce || !mRandomInitialised) {
+	//	if (!mGenerateOnce || !mRandomInitialised) {
+		mRandomTexture.DiscardContents ();
 			Graphics.Blit (null, mRandomTexture, mRandomShader);
 			mRandomInitialised = true;
-		}
+	//	}
 
 	}
 
